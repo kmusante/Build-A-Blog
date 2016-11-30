@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Delete Blog Post</h2>
+  <h2>{{ post.subject.content }} </h2>
+  
+  <article>{{ post.subject | safe }}</article>
+  <br>
+  <form method="post">
+    <label>
+      Are you sure you want to delete this post?
+      <input type="submit">
+    </label>
+  </form>
+  
+{% endblock %}

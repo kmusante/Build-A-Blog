@@ -1,0 +1,25 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+  {{ post.render() | safe }}
+  {% if post.comments %}
+
+    
+      <h2>Comments</h2>
+
+      {% for c in post.comments %}
+
+       {{ c.parent().name }} says:
+          <p class="comment-content">{{ c.comment }}</p>
+          <a href="/blog/{{post.key().id()}}/updatecomment/{{c.key().id()}}">update</a>
+          <span class="separator"> | </span>
+          <a href="/blog/{{post.key().id()}}/deletecomment/{{c.key().id()}}">delete</a>
+
+      {% endfor %}
+
+      <a href="/blog/{{post.key().id()}}/newcomment">add new comment</a>
+    {% endif %}
+
+{% endblock %}

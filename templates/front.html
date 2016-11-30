@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ error }}<h2>
+<div class="main-title">Ken's Blog</div>
+<h5><br><br><h5>
+  {% for p in posts %}
+    {{ p.render() | safe }}
+    <br><br>
+
+
+  {{p.comments.count()}} comments
+  <a href="/blog/{{p.key().id()}}/newcomment">(add new comment)</a>
+
+<div align = "right">
+    <a href="/blog/likepost/{{p.key().id()}}">Like</a>
+	<a href="/blog/editpost/{{p.key().id()}}">Edit</a>
+	<a href="/blog/deletepost/{{p.key().id()}}">Delete</a>
+</div>
+<br>
+  {% endfor %}
+{% endblock %}
+
